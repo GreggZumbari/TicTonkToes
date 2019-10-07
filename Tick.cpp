@@ -23,8 +23,8 @@ int main() {
   int board[boardSize][boardSize];
   
   //Clear board
-  for (int x = 0; x < boardSize; x++) {
-    for (int y = 0; y < boardSize; y++) {
+  for (int x = 1; x < boardSize; x++) {
+    for (int y = 1; y < boardSize; y++) {
       board[x][y] = BLANK;
     }
   }

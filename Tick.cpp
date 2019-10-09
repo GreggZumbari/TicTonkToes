@@ -13,7 +13,7 @@ using namespace std;
 int main() {
   
   //Player moves and empty values defined as constants to make code more readable
-  char BLANK = (char)32;
+  char BLANK = ' ';
   char X_MOVE = 'X';
   char O_MOVE = 'O';
 
@@ -59,14 +59,14 @@ int main() {
     //Place a piece
     cin >> move;
     if (((move[0] == '1' || move[0] == '2' || move[0] == '3') && (move[1] == 'a' || move[1] == 'b' || move[1] == 'c')) ) {
+      board[move[0] - 49][move[1] - 97] = turn;
       if (turn == X_MOVE) {
-	board[move[0] - 49][move[1] - 97] = X_MOVE;
 	turn = O_MOVE;
       }
       else {
-	board[move[0] - 49][move[1] - 97] = O_MOVE;
 	turn = X_MOVE;
       }
+      cout << (int)turn << endl;
       turnCount++;
     }
     else {

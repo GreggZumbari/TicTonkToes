@@ -52,20 +52,23 @@ int main() {
       cout << "Turns elapsed: " << turnCount << endl;
       cout << "  a b c" << endl;
       for (int x = 0; x < 3; x++) {
-	cout << x + 1;
+	char output[3];
+	output[0] = (char)32;
+	output[1] = (char)32;
+	output[2] = (char)32;
+	cout << x + 1 << ' ';
 	for (int y = 0; y < 3; y++) {
-	  cout << ' ';
-	  if (board[x][y] == 2) {
-	    cout << ' ';
+	  if (board[x][y] == BLANK) {
+	    output[y] = (char)32;
 	  }
-	  if (board[x][y] == 1) {
-	    cout << 'X';
+	  if (board[x][y] == X_MOVE) {
+	    output[y] = 'X';
 	  }
-	  if (board[x][y] == 0) {
-	    cout << 'O';
+	  if (board[x][y] == O_MOVE) {
+	    output[y] = 'O';
 	  }
 	}
-	cout << endl;
+	cout << output[0] << " " << output[1] << " " << output[2] << endl;
       }
       if (turn == 1) {
 	cout << "It is X\'s turn!" << endl;
@@ -77,7 +80,7 @@ int main() {
       //Place a piece
       cin >> move;
       cout << endl;
-      if (((move[0] == '1' || move[0] == '2' || move[0] == '3') && (move[1] == 'a' || move[1] =='b' || move[1] == 'c')) ) {
+      if (((move[0] == '1' || move[0] == '2' || move[0] == '3') && (move[1] == 'a' || move[1] =='b' || move[1] == 'c')) && (board[move[0] - 49][move[1] - 97] != X_MOVE && board[move[0] - 49][move[1] - 97] != O_MOVE)) {
         if (turn == X_MOVE) {
 	  board[move[0] - 49][move[1] - 97] = X_MOVE;
 	  turn = O_MOVE;
